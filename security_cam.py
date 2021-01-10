@@ -18,9 +18,11 @@ while (cam.isOpened() and TIMER>=0):
     _, thresh = cv2.threshold(blur, 20, 255, cv2.THRESH_BINARY)
     dilated = cv2.dilate(thresh, None, iterations=3)
     contours, _ = cv2.findContours(dilated, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    
     date_time = time.strftime("recording %H-%M -%d %m %y")  # set current time as video name
     t = time.ctime()
     font = cv2.FONT_HERSHEY_SIMPLEX
+    
     cv2.putText(frame1,t,
                 (380, 455), font,
                 0.5, (5, 5, 5),
